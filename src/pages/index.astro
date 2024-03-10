@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+
+const res = await fetch("https://api.trakt.tv/users/auferoz/lists", {
+	method: "GET",
+	headers: {
+		"Content-Type": "application/json",
+		"trakt-api-version": "2",
+		"trakt-api-key": "8dc14b77c9dc7c93f543f6b27f4ede42790463dac1b128c475029a4f4796f294"
+	}
+})
+
+const data = await res.json()
+
+console.log(data)
+
+
+
+
+---
+
+<Layout title="AstroTrakt">
+
+	<main>
+		<h1>test de api de trakt </h1>
+
+
+		<article>
+			<img src="" alt="">
+			<p></p>
+		</article>
+
+
+	</main>
+
+</Layout>
+
+<style>
+
+</style>
