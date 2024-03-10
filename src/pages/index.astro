@@ -2,13 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 
+const code = "a20ad5b14227bfd0bc95a38f0523cae1dc050b4df0956fef7cce718bfec3b713";
+const client_id = "8dc14b77c9dc7c93f543f6b27f4ede42790463dac1b128c475029a4f4796f294";
+const client_secret = "6436442ce30d042554bce181dd7ec0220beebacc35bda6829080b75f3ce9ca0d";
+const redirect_uri = "https://astrotrakt.netlify.app/";
+const grant_type = "authorization_code";
 
-const res = await fetch("https://api.trakt.tv/users/auferoz/lists", {
-	method: "GET",
+const res = await fetch("https://api.trakt.tv/oauth/token", {
+	method: "POST",
 	headers: {
-		"Content-Type": "application/json",
-		"trakt-api-version": "2",
-		"trakt-api-key": "8dc14b77c9dc7c93f543f6b27f4ede42790463dac1b128c475029a4f4796f294"
+		'code': code,
+		'client_id': client_id,
+		'client_secret': client_secret,
+		'redirect_uri': redirect_uri,
+		'grant_type': 'authorization_code'
 	}
 })
 
@@ -16,7 +23,7 @@ const data = await res.json()
 
 console.log(data)
 
-
+console.log("test")
 
 
 ---
