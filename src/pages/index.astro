@@ -2,20 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 
+const date = {
+  "access_token": "baf7dd9e537c66c66c577f9f0d9bfa9dd31b0cd56c8bc18cec36705696ef8031",
+  "token_type": "Bearer",
+  "expires_in": 7889238,
+  "refresh_token": "d8829593f547856dc9a283821ffc9cda297a627bc75adca670a5d09f0eb32969",
+  "scope": "public",
+  "created_at": 1710072527
+}
+
 const code = "a20ad5b14227bfd0bc95a38f0523cae1dc050b4df0956fef7cce718bfec3b713";
 const client_id = "8dc14b77c9dc7c93f543f6b27f4ede42790463dac1b128c475029a4f4796f294";
 const client_secret = "6436442ce30d042554bce181dd7ec0220beebacc35bda6829080b75f3ce9ca0d";
 const redirect_uri = "https://astrotrakt.netlify.app/";
 const grant_type = "authorization_code";
 
-const res = await fetch("https://api.trakt.tv/oauth/token", {
-	method: "POST",
+
+
+const res = await fetch("https://api.trakt.tv/users/auferoz/lists", {
+	method: "GET",
 	headers: {
-		'code': code,
-		'client_id': client_id,
-		'client_secret': client_secret,
-		'redirect_uri': redirect_uri,
-		'grant_type': 'authorization_code'
+		"content-type": "application/json",
+		"trakt-api-version": "2",
+		"trakt-api-key": "8dc14b77c9dc7c93f543f6b27f4ede42790463dac1b128c475029a4f4796f294"
 	}
 })
 
@@ -32,13 +41,16 @@ console.log("test")
 
 	<main>
 		<h1> test de api de trakt </h1>
+
 		<code>console.log()</code>
 
+		<code>{data}</code>
 
-		<article>
-			<img src="" alt="">
-			<p></p>
-		</article>
+		{
+			data.map((data: any) =>(
+				<h1>{data}</h1>
+			))
+		}
 
 
 	</main>
